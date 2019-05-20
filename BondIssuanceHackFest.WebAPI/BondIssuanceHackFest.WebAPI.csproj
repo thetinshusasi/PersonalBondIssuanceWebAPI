@@ -73,14 +73,12 @@
       <HintPath>..\packages\Nethereum.Contracts.3.3.0\lib\net451\Nethereum.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Geth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nethereum.Geth.3.3.0\lib\net451\Nethereum.Geth.dll</HintPath>
+      <HintPath>..\packages\Nethereum.Geth.3.2.0\lib\net451\Nethereum.Geth.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Hex, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Hex.3.3.0\lib\net451\Nethereum.Hex.dll</HintPath>
     </Reference>
-    <Reference Include="Nethereum.JsonRpc.Client, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nethereum.JsonRpc.Client.3.3.0\lib\net451\Nethereum.JsonRpc.Client.dll</HintPath>
-    </Reference>
+    <Reference Include="Nethereum.JsonRpc.Client, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e" />
     <Reference Include="Nethereum.JsonRpc.RpcClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.JsonRpc.RpcClient.3.3.0\lib\net451\Nethereum.JsonRpc.RpcClient.dll</HintPath>
     </Reference>
@@ -91,7 +89,7 @@
       <HintPath>..\packages\Nethereum.Model.3.3.0\lib\net451\Nethereum.Model.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Quorum, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nethereum.Quorum.3.3.0\lib\net451\Nethereum.Quorum.dll</HintPath>
+      <HintPath>..\packages\Nethereum.Quorum.3.2.0\lib\net451\Nethereum.Quorum.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.RLP, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.RLP.3.3.0\lib\net451\Nethereum.RLP.dll</HintPath>
@@ -192,6 +190,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Update, Version=2.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Update.2.4.7\lib\net40\Update.exe</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -264,6 +266,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="BondIssuance.Interfaces\ITest.cs" />
     <Compile Include="Controllers\BookRunner.cs" />
+    <Compile Include="Controllers\NodeController.cs" />
     <Compile Include="Controllers\QuorumController.cs" />
     <Compile Include="Controllers\BondController.cs" />
     <Compile Include="Controllers\BondTokenDefinition.cs" />
@@ -385,10 +388,6 @@
     <ProjectReference Include="..\BondIssuanceHackFest.DLL\BondIssuanceHackFest.DLL.csproj">
       <Project>{0482085e-6527-45f6-83ad-2eca76c95818}</Project>
       <Name>BondIssuanceHackFest.DLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BondIssuanceHackFest.Netherum\BondIssuanceHackFest.Netherum.csproj">
-      <Project>{1c1acd6f-30b5-4cc5-91ac-b31b6b4d1b04}</Project>
-      <Name>BondIssuanceHackFest.Netherum</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

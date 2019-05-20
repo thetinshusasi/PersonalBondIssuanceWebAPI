@@ -10,6 +10,8 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace BondIssuanceHackFest.WebAPI.Areas.HelpPage
 {

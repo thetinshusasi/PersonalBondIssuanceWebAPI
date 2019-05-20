@@ -68,7 +68,7 @@
       <HintPath>..\packages\Nethereum.Model.3.3.0\lib\net451\Nethereum.Model.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Quorum, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nethereum.Quorum.3.3.0\lib\net451\Nethereum.Quorum.dll</HintPath>
+      <HintPath>..\packages\Nethereum.Quorum.3.2.0\lib\net451\Nethereum.Quorum.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.RLP, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.RLP.3.3.0\lib\net451\Nethereum.RLP.dll</HintPath>
@@ -133,6 +133,9 @@
     <EmbeddedResource Include="Migrations\201905110231208_s.resx">
       <DependentUpon>201905110231208_s.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

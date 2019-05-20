@@ -1,8 +1,6 @@
 ﻿using BondIssuanceHackFest.DLL.DataModels;
 using BondIssuanceHackFest.DLL.IRepositories;
 using BondIssuanceHackFest.DLL.Models;
-using BondIssuanceHackFest.Netherum.ContractAdapters;
-using BondIssuanceHackFest.Netherum.QuorumAdapters;
 using BondIssuanceHackFest.WebAPI.BondIssuance.Interfaces;
 using BondIssuanceHackFest.WebAPI.Controllers.Nethereum.StandardTokenEIP20.ContractDefinition;
 using Nethereum.Contracts.ContractHandlers;
@@ -70,14 +68,14 @@ namespace BondIssuanceHackFest.WebAPI.Controllers
         //}
 
         // POST api/values
-        public async Task<IHttpActionResult> Post()
-        {
-            var quorumConnector = new QuorumConnectionBuider(_quorumUserRepository, _quorumNodeRepository, _dbContext);
-           await quorumConnector.BuildQuorumUserAddress();
-            var contractConnector = new ContractConnectionBuider(_contractRepository, _dbContext);
-            contractConnector.DeploySols();
-            return Ok();
-        }
+        //public async Task<IHttpActionResult> Post()
+        //{
+        //   // var quorumConnector = new QuorumConnectionBuider(_quorumUserRepository, _quorumNodeRepository, _dbContext);
+        //   //await quorumConnector.BuildQuorumUserAddress();
+        //   // var contractConnector = new ContractConnectionBuider(_contractRepository, _dbContext);
+        //   // contractConnector.DeploySols();
+        //   // return Ok();
+        //}
 
         // PUT api/values/5
 
