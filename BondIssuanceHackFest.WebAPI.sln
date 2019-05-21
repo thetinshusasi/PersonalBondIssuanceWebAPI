@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BondIssuance.WebApi", "BondIssuance.WebApi\BondIssuance.WebApi.csproj", "{60FD8E45-45F3-467C-A16E-3B36A417FA67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BondIssuance.DLL", "BondIssuance.DLL\BondIssuance.DLL.csproj", "{D0754805-FFC8-4F79-B4E7-8B37F250A28E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{60FD8E45-45F3-467C-A16E-3B36A417FA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60FD8E45-45F3-467C-A16E-3B36A417FA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60FD8E45-45F3-467C-A16E-3B36A417FA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
