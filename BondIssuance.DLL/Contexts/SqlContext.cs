@@ -10,12 +10,15 @@ namespace BondIssuance.DLL.Contexts
 {
     class SqlContext : DbContext
     {
-        public SqlContext() : base("name=PersonalBondIssuanceConnectionString")
+        public SqlContext() : base("name=BondIssuanceConnectionString")
         {
 
         }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<Node> Nodes { get; set; }
+        public DbSet<AccessKey> AccessKeys { get; set; }
+
 
 
     }
