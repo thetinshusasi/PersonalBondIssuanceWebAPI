@@ -8,11 +8,11 @@ namespace BondIssuance.DLL.DataModels
 {
     public class Node
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public IList<AccessKey> AccessKeys { get; set; }
+        public List<AccessKey> AccessKeys { get; set; }
 
         public string Password { get; set; }
     }

@@ -7,13 +7,13 @@ namespace BondIssuance.DLL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class migration4 : IMigrationMetadata
+    public sealed partial class intial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migration4));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905220013465_migration-4"; }
+            get { return "201906201742232_intial"; }
         }
         
         string IMigrationMetadata.Source

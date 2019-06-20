@@ -10,7 +10,7 @@ namespace BondIssuance.DLL.DataModels
 
     {
         public int Id { get; set; }
-        public string NodeId { get; set; }
+        public int NodeId { get; set; }
 
         public string UrlKey { get; set; }
     }

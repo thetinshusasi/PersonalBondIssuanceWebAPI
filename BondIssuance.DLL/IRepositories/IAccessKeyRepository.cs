@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BondIssuance.DLL.IRepositories
 {
-    interface IAccessKeyRepository:IRepository<AccessKey>
+    public interface IAccessKeyRepository : IRepository<AccessKey>
     {
     }
 }

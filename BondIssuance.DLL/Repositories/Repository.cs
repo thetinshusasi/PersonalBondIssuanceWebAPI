@@ -1,4 +1,5 @@
-﻿using BondIssuance.DLL.IRepositories;
+﻿using BondIssuance.DLL.Contexts;
+using BondIssuance.DLL.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,66 +10,86 @@ using System.Threading.Tasks;
 
 namespace BondIssuance.DLL.Repositories
 {
-        public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    {
+
+        internal DbContext _context;
+        internal DbSet<TEntity> _dbSet;
+
+        public Repository(DbContext context)
         {
-            protected readonly DbContext Context;
+            _context = context;
+            _dbSet = context.Set<TEntity>();
+        }
 
-            public Repository(DbContext context)
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "")
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (filter != null)
             {
-                Context = context;
+                query = query.Where(filter);
             }
 
-            public TEntity Get(int id)
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
-                // such as Courses or Authors, and we need to use the generic Set() method to access them.
-                return Context.Set<TEntity>().Find(id);
+                query = query.Include(includeProperty);
             }
 
-            public IEnumerable<TEntity> GetAll()
+            if (orderBy != null)
             {
-                // Note that here I've repeated Context.Set<TEntity>() in every method and this is causing
-                // too much noise. I could get a reference to the DbSet returned from this method in the 
-                // constructor and store it in a private field like _entities. This way, the implementation
-                // of our methods would be cleaner:
-                // 
-                // _entities.ToList();
-                // _entities.Where();
-                // _entities.SingleOrDefault();
-                // 
-                // I didn't change it because I wanted the code to look like the videos. But feel free to change
-                // this on your own.
-                return Context.Set<TEntity>().ToList();
+                return orderBy(query).ToList();
             }
-
-            public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+            else
             {
-                return Context.Set<TEntity>().Where(predicate);
-            }
-
-            public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
-            {
-                return Context.Set<TEntity>().SingleOrDefault(predicate);
-            }
-
-            public void Add(TEntity entity)
-            {
-                Context.Set<TEntity>().Add(entity);
-            }
-
-            public void AddRange(IEnumerable<TEntity> entities)
-            {
-                Context.Set<TEntity>().AddRange(entities);
-            }
-
-            public void Remove(TEntity entity)
-            {
-                Context.Set<TEntity>().Remove(entity);
-            }
-
-            public void RemoveRange(IEnumerable<TEntity> entities)
-            {
-                Context.Set<TEntity>().RemoveRange(entities);
+                return query.ToList();
             }
         }
+
+        public virtual IEnumerable<TEntity> GetAll()
+        {
+            return _context.Set<TEntity>().ToList();
+        }
+        public virtual TEntity GetByID(int id)
+        {
+            return _dbSet.Find(id);
+        }
+
+        public virtual void Insert(TEntity entity)
+        {
+            _dbSet.Add(entity);
+        }
+
+        public virtual void Delete(int id)
+        {
+            TEntity entityToDelete = _dbSet.Find(id);
+            Delete(entityToDelete);
+        }
+
+        public virtual void Delete(TEntity entityToDelete)
+        {
+            if (_context.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                _dbSet.Attach(entityToDelete);
+            }
+            _dbSet.Remove(entityToDelete);
+        }
+
+        //public virtual void Update(TEntity entityToUpdate)
+        //{
+        //    dbSet.Attach(entityToUpdate);
+        //    context.Entry(entityToUpdate).State = EntityState.Modified;
+        //}
+
+        public virtual void Save(TEntity entity)
+        {
+            _dbSet.Add(entity);
+            _context.SaveChanges();
+        }
+
     }
+}
