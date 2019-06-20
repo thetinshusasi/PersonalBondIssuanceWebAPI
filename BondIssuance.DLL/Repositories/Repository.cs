@@ -79,12 +79,6 @@ namespace BondIssuance.DLL.Repositories
             _dbSet.Remove(entityToDelete);
         }
 
-        //public virtual void Update(TEntity entityToUpdate)
-        //{
-        //    dbSet.Attach(entityToUpdate);
-        //    context.Entry(entityToUpdate).State = EntityState.Modified;
-        //}
-
         public virtual void Save(TEntity entity)
         {
             _dbSet.Add(entity);
