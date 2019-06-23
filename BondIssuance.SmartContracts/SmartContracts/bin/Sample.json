@@ -1,0 +1,48 @@
+{
+    "abi": [
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "x",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setValueForX",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "getValueForX",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "bytecode": "6080604052348015600f57600080fd5b5060a28061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c8063540c8629146037578063e1e99e8d146053575b600080fd5b605160048036036020811015604b57600080fd5b5035606b565b005b60596070565b60408051918252519081900360200190f35b600055565b6000549056fea165627a7a7230582045df2877835f61ca0f2a725e364ff47870abeb78980f922ab69db95016a3bde30029",
+    "functionHashes": {
+        "getValueForX()": "e1e99e8d",
+        "setValueForX(uint256)": "540c8629"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "32400",
+            "executionCost": "87",
+            "totalCost": "32487"
+        },
+        "external": {
+            "getValueForX()": "398",
+            "setValueForX(uint256)": "20167"
+        }
+    }
+}

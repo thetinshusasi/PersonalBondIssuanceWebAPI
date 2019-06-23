@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Contexts\SqlContext.cs" />
     <Compile Include="DataModels\AccessKey.cs" />
+    <Compile Include="DataModels\Contract.cs" />
     <Compile Include="DataModels\Node.cs" />
     <Compile Include="DataModels\User.cs" />
     <Compile Include="DataModels\UserAccount.cs" />
@@ -76,6 +77,30 @@
     <Compile Include="Migrations\201906201742232_intial.cs" />
     <Compile Include="Migrations\201906201742232_intial.Designer.cs">
       <DependentUpon>201906201742232_intial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221855135_23-06-2019-1.cs" />
+    <Compile Include="Migrations\201906221855135_23-06-2019-1.Designer.cs">
+      <DependentUpon>201906221855135_23-06-2019-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221900220_23-06-2019-2.cs" />
+    <Compile Include="Migrations\201906221900220_23-06-2019-2.Designer.cs">
+      <DependentUpon>201906221900220_23-06-2019-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221910521_23-06-2019-3.cs" />
+    <Compile Include="Migrations\201906221910521_23-06-2019-3.Designer.cs">
+      <DependentUpon>201906221910521_23-06-2019-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221921306_23-06-2019-4.cs" />
+    <Compile Include="Migrations\201906221921306_23-06-2019-4.Designer.cs">
+      <DependentUpon>201906221921306_23-06-2019-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221922553_23-06-2019-5.cs" />
+    <Compile Include="Migrations\201906221922553_23-06-2019-5.Designer.cs">
+      <DependentUpon>201906221922553_23-06-2019-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906222356208_23-06-2019-6.cs" />
+    <Compile Include="Migrations\201906222356208_23-06-2019-6.Designer.cs">
+      <DependentUpon>201906222356208_23-06-2019-6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +117,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906201742232_intial.resx">
       <DependentUpon>201906201742232_intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221855135_23-06-2019-1.resx">
+      <DependentUpon>201906221855135_23-06-2019-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221900220_23-06-2019-2.resx">
+      <DependentUpon>201906221900220_23-06-2019-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221910521_23-06-2019-3.resx">
+      <DependentUpon>201906221910521_23-06-2019-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221921306_23-06-2019-4.resx">
+      <DependentUpon>201906221921306_23-06-2019-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221922553_23-06-2019-5.resx">
+      <DependentUpon>201906221922553_23-06-2019-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906222356208_23-06-2019-6.resx">
+      <DependentUpon>201906222356208_23-06-2019-6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

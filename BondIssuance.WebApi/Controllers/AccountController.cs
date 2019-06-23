@@ -1,4 +1,7 @@
-﻿using Nethereum.Quorum;
+﻿using BondIssuance.DLL.DataModels;
+using BondIssuance.DLL.IRepositories;
+using Nethereum.Quorum;
+using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Web3.Accounts;
 using Nethereum.Web3.Accounts.Managed;
 using System;
@@ -14,19 +17,63 @@ namespace BondIssuance.WebApi.Controllers
 {
     public class AccountController : ApiController
     {
-        public AccountController()
-        {
+        private readonly INodeRepository _nodeRepository;
+        private readonly IAccessKeyRepository _accessKeyRepository;
+        private readonly IUserRepository _userKeyRepository;
+        private readonly IUserAccountRepository _userAccountKeyRepository;
 
+
+
+        public AccountController(INodeRepository nodeRepository,
+            IAccessKeyRepository accessKeyRepository,
+            IUserRepository userKeyRepository,
+            IUserAccountRepository userAccountKeyRepository)
+        {
+            _nodeRepository = nodeRepository;
+            _accessKeyRepository = accessKeyRepository;
+            _userKeyRepository = userKeyRepository;
+            _userAccountKeyRepository = userAccountKeyRepository;
         }
 
         [HttpPost]
         [Route("CreateAccount")]
 
-        public async Task<IHttpActionResult> CreateUserAccount(string userName, string password)
+        public async Task<IHttpActionResult> CreateUserAccount(int userId, string password)
         {
 
-            var web3 = new Web3Quorum("https://admintest.blockchain.azure.com:3200/o8rC9YIzD9rZ23lBwwhzqt5M");
-            var personalAccountDetails = await web3.Personal.NewAccount.SendRequestAsync(password);
+            var user = _userKeyRepository.GetByID(userId);
+            if (user != null)
+            {
+                var node = _nodeRepository.GetByID(user.NodeId);
+                if (node != null)
+                {
+                    var accessKey = _accessKeyRepository.GetAll().ToList().Where(item => item.NodeId == node.Id).FirstOrDefault();
+                    if (accessKey != null)
+                    {
+                        var web3 = new Web3Quorum(accessKey.UrlKey);
+                        var publicKey = await web3.Personal.NewAccount.SendRequestAsync(user.Name + user.Password);
+                        var userAccount = new UserAccount()
+                        {
+                            Name = user.Name,
+                            Password = user.Password,
+                            PublicKey = publicKey,
+                            Address = publicKey,
+                            UserId = user.Id,
+                            PrivateKey = password
+
+
+                        };
+                        _userAccountKeyRepository.Save(userAccount);
+
+                    }
+
+                }
+            }
+
+
+            //node.
+            //var web3 = new Web3Quorum("https://admintest.blockchain.azure.com:3200/o8rC9YIzD9rZ23lBwwhzqt5M");
+            //var personalAccountDetails = await web3.Personal.NewAccount.SendRequestAsync(password);
             return Ok(200);
 
         }
@@ -34,21 +81,28 @@ namespace BondIssuance.WebApi.Controllers
         [HttpGet]
         [Route("GetAccounts")]
 
-        public async Task<IHttpActionResult> GetAccounts()
+        public async Task<IHttpActionResult> GetAccounts(int nodeId)
         {
-            var web3 = new Web3Quorum("https://admintest.blockchain.azure.com:3200/o8rC9YIzD9rZ23lBwwhzqt5M");
-           var accounts =  await web3.Personal.ListAccounts.SendRequestAsync();
-            return Ok(accounts);
+            string[] accountAddress = null;
+            var node = _nodeRepository.GetByID(nodeId);
+            if (node != null)
+            {
+                var accessKey = _accessKeyRepository.GetAll().ToList().Where(item => item.NodeId == node.Id).FirstOrDefault();
+                if (accessKey != null)
+                {
+                    var web3 = new Web3Quorum(accessKey.UrlKey);                        
+                    accountAddress = await web3.Eth.Accounts.SendRequestAsync();
+                }
+            }
+            return Ok(accountAddress.ToList());
         }
 
         [HttpGet]
         [Route("GetAccount")]
-        public async Task<IHttpActionResult> GetAccount(string userName, string password)
+        public async Task<IHttpActionResult> GetAccount(int userId)
         {
-            var web3 = new Web3Quorum("https://admintest.blockchain.azure.com:3200/o8rC9YIzD9rZ23lBwwhzqt5M");
-            var accounts = await web3.Personal.ListAccounts.SendRequestAsync();
-
-            var account = new ManagedAccount(accounts[1], password);
+            var users =_userAccountKeyRepository.GetAll().ToList();
+            users.Where(item => item.UserId == userId);
             return Ok(200);
         }
     }

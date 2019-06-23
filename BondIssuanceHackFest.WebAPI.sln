@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BondIssuance.WebApi", "Bond
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BondIssuance.DLL", "BondIssuance.DLL\BondIssuance.DLL.csproj", "{D0754805-FFC8-4F79-B4E7-8B37F250A28E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BondIssuance.SmartContracts", "BondIssuance.SmartContracts\BondIssuance.SmartContracts.csproj", "{F768B238-4574-4CAE-A188-BE9DC483D1C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0754805-FFC8-4F79-B4E7-8B37F250A28E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F768B238-4574-4CAE-A188-BE9DC483D1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F768B238-4574-4CAE-A188-BE9DC483D1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F768B238-4574-4CAE-A188-BE9DC483D1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F768B238-4574-4CAE-A188-BE9DC483D1C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

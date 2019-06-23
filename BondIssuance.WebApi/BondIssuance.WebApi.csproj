@@ -255,6 +255,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContractController\SampleContractController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NodeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -338,6 +339,10 @@
     <ProjectReference Include="..\BondIssuance.DLL\BondIssuance.DLL.csproj">
       <Project>{d0754805-ffc8-4f79-b4e7-8b37f250a28e}</Project>
       <Name>BondIssuance.DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BondIssuance.SmartContracts\BondIssuance.SmartContracts.csproj">
+      <Project>{f768b238-4574-4cae-a188-be9dc483d1c1}</Project>
+      <Name>BondIssuance.SmartContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
