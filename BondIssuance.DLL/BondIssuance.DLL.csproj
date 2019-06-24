@@ -70,6 +70,7 @@
     <Compile Include="DataModels\User.cs" />
     <Compile Include="DataModels\UserAccount.cs" />
     <Compile Include="IRepositories\IAccessKeyRepository.cs" />
+    <Compile Include="IRepositories\IContractRepository.cs" />
     <Compile Include="IRepositories\INodeRepository.cs" />
     <Compile Include="IRepositories\IRepository.cs" />
     <Compile Include="IRepositories\IUserAccountRepository.cs" />
@@ -102,9 +103,14 @@
     <Compile Include="Migrations\201906222356208_23-06-2019-6.Designer.cs">
       <DependentUpon>201906222356208_23-06-2019-6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906230119506_23-06-2019-7.cs" />
+    <Compile Include="Migrations\201906230119506_23-06-2019-7.Designer.cs">
+      <DependentUpon>201906230119506_23-06-2019-7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccessKeyRepository.cs" />
+    <Compile Include="Repositories\ContractRepository.cs" />
     <Compile Include="Repositories\NodeRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserAccountRepository.cs" />
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906222356208_23-06-2019-6.resx">
       <DependentUpon>201906222356208_23-06-2019-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906230119506_23-06-2019-7.resx">
+      <DependentUpon>201906230119506_23-06-2019-7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

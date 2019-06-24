@@ -45,6 +45,9 @@
     <Reference Include="Nethereum.Contracts, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Contracts.3.3.0\lib\net451\Nethereum.Contracts.dll</HintPath>
     </Reference>
+    <Reference Include="Nethereum.Geth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nethereum.Geth.3.3.0\lib\net451\Nethereum.Geth.dll</HintPath>
+    </Reference>
     <Reference Include="Nethereum.Hex, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Hex.3.3.0\lib\net451\Nethereum.Hex.dll</HintPath>
     </Reference>

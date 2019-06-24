@@ -22,6 +22,7 @@ namespace BondIssuance.DLL.Contexts
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<Node> Nodes { get; set; }
         public virtual DbSet<AccessKey> AccessKeys { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
 
 
 

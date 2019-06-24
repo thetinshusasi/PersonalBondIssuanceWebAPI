@@ -75,6 +75,8 @@ namespace BondIssuance.WebApi.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind<IUserAccountRepository>().To<UserAccountRepository>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IContractRepository>().To<ContractRepository>();
+
             kernel.Bind<DbContext>().To<SqlContext>();
 
 
