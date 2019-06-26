@@ -2,6 +2,7 @@
 using BondIssuance.DLL.IRepositories;
 using Nethereum.Quorum;
 using Nethereum.RPC.Eth.DTOs;
+using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using Nethereum.Web3.Accounts.Managed;
 using System;
@@ -50,16 +51,17 @@ namespace BondIssuance.WebApi.Controllers
                     var accessKey = _accessKeyRepository.GetAll().ToList().Where(item => item.NodeId == node.Id).FirstOrDefault();
                     if (accessKey != null)
                     {
-                        var web3 = new Web3Quorum(accessKey.UrlKey);
+                        var web3 = new Web3(accessKey.UrlKey);
                         var publicKey = await web3.Personal.NewAccount.SendRequestAsync(user.Name + user.Password);
+
                         var userAccount = new UserAccount()
                         {
                             Name = user.Name,
-                            Password = user.Password,
+                            Password = user.Name + user.Password,
                             PublicKey = publicKey,
                             Address = publicKey,
                             UserId = user.Id,
-                            PrivateKey = password
+                            PrivateKey = user.Name + user.Password
 
 
                         };

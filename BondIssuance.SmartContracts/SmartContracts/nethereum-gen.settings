@@ -1,6 +1,6 @@
 {
-    "projectName": "BondIssuanceContracts",
-    "namespace": "BondIssuanceContracts",
-    "lang":0,
-    "autoCodeGen":true
+    "projectName": "SmartContracts",
+    "namespace": "SmartContracts.Contracts",
+    "lang": 0,
+    "autoCodeGen": true
 }
