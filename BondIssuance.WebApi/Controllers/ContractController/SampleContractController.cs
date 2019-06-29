@@ -26,6 +26,8 @@ using SmartContracts.Contracts.BondIssuer;
 using SmartContracts.Contracts.BondIssuer.ContractDefinition;
 using Nethereum.ABI.Encoders;
 using Nethereum.Hex.HexTypes;
+using SmartContracts.Contracts.Hello.ContractDefinition;
+using SmartContracts.Contracts.Hello;
 
 namespace BondIssuance.WebApi.Controllers.ContractController
 {
@@ -86,49 +88,21 @@ namespace BondIssuance.WebApi.Controllers.ContractController
                         if (accessKey != null)
                         {
 
-                            var managedAccount = new ManagedAccount(userAccount.Address, userAccount.Password);
-                            var web3Managed = new Web3(managedAccount,accessKey.UrlKey);
-                            var unlocked = await web3Managed.Personal.UnlockAccount.SendRequestAsync(userAccount.Address, userAccount.Password, 30);
-
-                            var balance = await web3Managed.Eth.GetBalance.SendRequestAsync(userAccount.Address);
-
-                            var service = await BondIssuerService.DeployContractAndWaitForReceiptAsync(web3Managed,
-                                new BondIssuerDeployment()
-                                {
-                                    Bonds = new List<BigInteger>(),
-                                    Coupon = 10,
-                                    Decimals = 10,
-                                    DocumentHashes = new List<byte[]>(),
-                                    FaceValue = 100,
-                                    Investors = new List<string>(),
-                                    Isin = "ISN",
-                                    Issuer = userAccount.Address,
-                                    Maturity = "10",
-                                    Name = "tinshuToken",
-                                    TotalSupply = 10,
-                                    Gas = 1000000
-                                });
-
-                            //var web3Geth = new Web3Geth(managedAccount, accessKey.UrlKey);
-
-                            //       var mineResult = await web3Geth.Miner.Start.SendRequestAsync(6);
-                            //var status = new HexBigInteger(0);
-                            //while (service.Status == status)
-                            //{
-                            //    Thread.Sleep(5000);
-                            //    service = await web3Managed.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(service.TransactionHash);
-                            //}
-                            //mineResult = await web3Geth.Miner.Stop.SendRequestAsync();
-
-                            //_contractRepository.Save(new DLL.DataModels.Contract()
-                            //{
-                            //    Name = CONTRACT_NAME,
-                            //    Address = service.ContractAddress,
-                            //    NodeId = node.Id,
-                            //    UserId = user.Id,
-                            //    UserAccountId = userAccount.Id
-                            //});
-                            return Ok("code deployed");
+                           var managedAccount = new ManagedAccount(userAccount.Address,userAccount.PrivateKey);
+                            var web3Managed = new Web3(managedAccount, accessKey.UrlKey);
+                            var service = await HelloService.DeployContractAndGetServiceAsync(web3Managed,
+                                new HelloDeployment() );
+                            var message = await service.GetMessageQueryAsync(new GetMessageFunction());
+                            
+                            _contractRepository.Save(new DLL.DataModels.Contract()
+                            {
+                                Name = CONTRACT_NAME,
+                                Address = service.ContractHandler.ContractAddress,
+                                NodeId = node.Id,
+                                UserId = user.Id,
+                                UserAccountId = userAccount.Id
+                            });
+                            return Ok(message);
 
                         }
                     }
@@ -281,16 +255,17 @@ namespace BondIssuance.WebApi.Controllers.ContractController
 
 
 
-                            var managedAccount = new Account(userAccount.Address);
-                            var web3Managed = new Web3(managedAccount, accessKey.UrlKey);
-                            var unlocked = await web3Managed.Personal.UnlockAccount.SendRequestAsync(userAccount.Address, userAccount.Password, 30);
+                            var managedAccount = new QuorumAccount(userAccount.Address);
+                            var web3Managed = new Web3Quorum(managedAccount,accessKey.UrlKey);
+                            var unlocked = await web3Managed.Personal.UnlockAccount.SendRequestAsync(userAccount.Address, userAccount.Password, 120);
+                            var service = new HelloService(web3Managed, contract.Address);
+                            var contractHandler = service.ContractHandler;
 
-                            var service2 = new BondIssuerService(web3Managed, contract.Address);
-                            var receipt2 = await service2.GetTestValueQueryAsync(
-                                new GetTestValueFunction()
-                                {                                 
-                                    FromAddress = userAccount.Address
-                                });
+                            /// Receipt is coming  as null
+                            var receipt2 = await service.GetMessageQueryAsync(
+                                new GetMessageFunction()
+                                );
+                               
 
                             return Ok(receipt2);
 

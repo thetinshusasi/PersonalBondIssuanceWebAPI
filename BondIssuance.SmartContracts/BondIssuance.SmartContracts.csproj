@@ -119,6 +119,8 @@
     <Compile Include="SmartContracts\ERC20Pausable\ERC20PausableService.cs" />
     <Compile Include="SmartContracts\ERC20\ContractDefinition\ERC20Definition.cs" />
     <Compile Include="SmartContracts\ERC20\ERC20Service.cs" />
+    <Compile Include="SmartContracts\Hello\ContractDefinition\HelloDefinition.cs" />
+    <Compile Include="SmartContracts\Hello\HelloService.cs" />
     <Compile Include="SmartContracts\IERC165\ContractDefinition\IERC165Definition.cs" />
     <Compile Include="SmartContracts\IERC165\IERC165Service.cs" />
     <Compile Include="SmartContracts\IERC20\ContractDefinition\IERC20Definition.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="SmartContracts\SafeMath\SafeMathService.cs" />
     <Compile Include="SmartContracts\SignerRole\ContractDefinition\SignerRoleDefinition.cs" />
     <Compile Include="SmartContracts\SignerRole\SignerRoleService.cs" />
+    <Compile Include="SmartContracts\TestContract\BondTokenDefinition.cs" />
     <Compile Include="SmartContracts\TokenTimelock\ContractDefinition\TokenTimelockDefinition.cs" />
     <Compile Include="SmartContracts\TokenTimelock\TokenTimelockService.cs" />
     <Compile Include="SmartContracts\Token\ContractDefinition\TokenDefinition.cs" />

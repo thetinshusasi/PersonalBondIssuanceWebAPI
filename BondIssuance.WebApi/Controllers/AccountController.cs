@@ -1,5 +1,6 @@
 ﻿using BondIssuance.DLL.DataModels;
 using BondIssuance.DLL.IRepositories;
+using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Quorum;
 using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Web3;
@@ -51,17 +52,20 @@ namespace BondIssuance.WebApi.Controllers
                     var accessKey = _accessKeyRepository.GetAll().ToList().Where(item => item.NodeId == node.Id).FirstOrDefault();
                     if (accessKey != null)
                     {
-                        var web3 = new Web3(accessKey.UrlKey);
-                        var publicKey = await web3.Personal.NewAccount.SendRequestAsync(user.Name + user.Password);
+
+                        var ecKey = Nethereum.Signer.EthECKey.GenerateKey();
+                        var privateKey = ecKey.GetPrivateKeyAsBytes().ToHex();
+                        var web3 = new Web3Quorum(accessKey.UrlKey);
+                        var publicKey = await web3.Personal.NewAccount.SendRequestAsync(privateKey);
 
                         var userAccount = new UserAccount()
                         {
                             Name = user.Name,
-                            Password = user.Name + user.Password,
+                            Password = privateKey,
                             PublicKey = publicKey,
                             Address = publicKey,
                             UserId = user.Id,
-                            PrivateKey = user.Name + user.Password
+                            PrivateKey = privateKey
 
 
                         };
